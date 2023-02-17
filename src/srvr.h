@@ -11,6 +11,8 @@
 #include <sys/un.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <ctype.h>
+#include <getopt.h>
 
 #include "headers/conn.h"
 #include "headers/err.h"
@@ -20,6 +22,5 @@
 #define SRVR_SOCK_PATH "/tmp/simp_srvr"
 #define BUFF_SIZE 10
 
-typedef enum { false, true } boolean;
-
+/** typedef enum { false, true} boolean;*/
 #endif

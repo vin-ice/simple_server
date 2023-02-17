@@ -6,7 +6,3 @@
 - First Come First Serve ranking of clients
 - Command Execution
 
-## Features
-- Multi-user access
-- Client Ranking
-- Command Execution

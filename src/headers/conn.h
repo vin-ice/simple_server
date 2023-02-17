@@ -10,6 +10,7 @@
  * @prev: Previous connection
  * @next: next connection
  * @cid: Client's connection id
+ * @addr: Pair socket address: For requests/responses
 */
 typedef struct conn_list_s
 {
@@ -29,10 +30,14 @@ typedef struct conn_table_s
     size_t size;
 } conn_table_t;
 
+typedef enum { false, true } boolean;
+
 
 void conn_init(size_t);
 int conn_add(int cid);
 int conn_drop(int cid);
 boolean conn_connected(int cfd);
 conn_table_t *get_conns_struct(void);
+int conn_destruct(void);
+
 #endif

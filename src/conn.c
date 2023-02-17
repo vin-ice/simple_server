@@ -2,7 +2,6 @@
 /**
  * Module to handle all connections matters
 */
-
 static size_t conn_max;
 static conn_table_t *conns = NULL;
 /**
@@ -138,7 +137,7 @@ boolean conn_connected(int cfd)
     conn_list_t *conn;
 
     if (!cfd)
-        retrun (false);
+        return (false);
     
     for (conn = conns->list; conn; conn = conn->next)
         if (conn->cid == cfd)
@@ -154,4 +153,22 @@ boolean conn_connected(int cfd)
 conn_table_t *get_conns_struct(void)
 {
     return (conns);
+}
+
+/***
+ * conn_destruct - Destroys structures set up for
+ * connections
+ * @Return: 0 if successful else -1
+*/
+int conn_destruct(void)
+{
+    conn_list_t *temp, *head;
+
+    head = conns->list->next;
+
+    for (temp = head; head; temp = head, head = head->next)
+        free(temp);
+    free(temp);
+    free(conns);
+    return (0);
 }
